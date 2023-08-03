@@ -9,21 +9,27 @@
     <title>Библиотека фантастики</title>
   </head>
   <body>
-    {% for book in books_details %}
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="http://tululu.org{{ book.image_src|urlencode() }}" class="card-img" alt="Обложка книги {{ book.name }}">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ book.name }}</h5>
-              <p class="card-text">{{ book.author }}</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <div class="container">
+      <div class="row">
+        {% for book in books_details %}
+          <div class="col-6">
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="http://tululu.org{{ book.image_src|urlencode() }}" class="card-img" alt="Обложка книги {{ book.name }}">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ book.name }}</h5>
+                    <p class="card-text">{{ book.author }}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
   </body>
 </html>
