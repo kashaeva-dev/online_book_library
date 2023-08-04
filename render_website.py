@@ -11,7 +11,7 @@ def render_website():
         autoescape=select_autoescape(['html', 'xml']),
     )
 
-    template = env.get_template('tululu_books/template.html')
+    template = env.get_template('template.html')
 
     with open('tululu_books/books_details.json', 'r', encoding="utf8") as file:
         books_details = json.load(file)
@@ -30,7 +30,8 @@ def main():
     server = Server()
 
     server.watch('/Users/nataly/Projects/online_book_library/tululu_books/', render_website)
-    server.serve(root='index.html')
+    server.watch('/Users/nataly/Projects/online_book_library/template.html', render_website)
+    server.serve(root='.', port=8080, host='127.0.0.1')
 
 
 if __name__ == '__main__':

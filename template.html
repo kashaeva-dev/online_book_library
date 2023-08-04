@@ -16,12 +16,15 @@
             <div class="card mb-3" style="max-width: 540px;">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img src="http://tululu.org{{ book.image_src|urlencode() }}" class="card-img" alt="Обложка книги {{ book.name }}">
+                  <img src="tululu_books/{{ book.image_src|urlencode() }}" class="card-img" alt="Обложка книги {{ book.title }}">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">{{ book.name }}</h5>
+                    <h5 class="card-title">{{ book.title }}</h5>
                     <p class="card-text">{{ book.author }}</p>
+                    {% with book_txt_url = "tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
+                    <a href="{{ book_txt_url|urlencode() }}" target="_blank" rel="noopener noreferrer">Читать</a>
+                    {% endwith %}
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
