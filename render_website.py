@@ -20,7 +20,7 @@ def render_website():
 
     books_details_chuncked = list(chunked(books_details, 15))
 
-    # os.makedirs('pages', exist_ok=True)
+    os.makedirs('pages', exist_ok=True)
 
     pages_count = len(books_details_chuncked)
     for index, books_details_chunck in enumerate(books_details_chuncked):
@@ -29,7 +29,7 @@ def render_website():
             pages_count=pages_count,
             current_page=index + 1,
         )
-        with open(f'index{index + 1}.html', 'w', encoding="utf8") as file:
+        with open(f'pages/index{index + 1}.html', 'w', encoding="utf8") as file:
             file.write(rendered_page)
 
 
