@@ -11,18 +11,34 @@
   <body>
     <div class="container">
       <div class="row">
+        <div class="col">
+          <h1>Библиотека фантастики</h1>
+        </div>
+      </div>
+      <div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="row">
         {% for book in books_details %}
           <div class="col-6">
             <div class="card mb-3" style="max-width: 540px;">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img src="tululu_books/{{ book.image_src|urlencode() }}" class="card-img" alt="Обложка книги {{ book.title }}">
+                  <img src="../tululu_books/{{ book.image_src|urlencode() }}" class="card-img" alt="Обложка книги {{ book.title }}">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">{{ book.title }}</h5>
                     <p class="card-text">{{ book.author }}</p>
-                    {% with book_txt_url = "tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
+                    {% with book_txt_url = "../tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
                     <a href="{{ book_txt_url|urlencode() }}" target="_blank" rel="noopener noreferrer">Читать</a>
                     {% endwith %}
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
