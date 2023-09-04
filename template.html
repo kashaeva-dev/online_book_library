@@ -16,19 +16,19 @@
             {% if current_page == 1 %}
               <li class="page-item disabled"><span class="page-link">Назад</span></li>
             {% else %}
-              <li class="page-item"><a class="page-link" href="index{{ current_page - 1 }}.html">Назад</a></li>
+              <li class="page-item"><a class="page-link" href="/pages/index{{ current_page - 1 }}.html">Назад</a></li>
             {% endif %}
             {% for page_number in range(1, pages_count + 1) %}
               {% if page_number == current_page %}
-                <li class="page-item active"><a class="page-link" href="index{{ current_page }}.html">{{ page_number }}</a></li>
+                <li class="page-item active"><a class="page-link" href="/pages/index{{ current_page }}.html">{{ page_number }}</a></li>
               {% else %}
-                <li class="page-item"><a class="page-link" href="index{{ page_number }}.html">{{ page_number }}</a></li>
+                <li class="page-item"><a class="page-link" href="/pages/index{{ page_number }}.html">{{ page_number }}</a></li>
               {% endif %}
             {% endfor %}
             {% if current_page == pages_count %}
               <li class="page-item disabled"><span class="page-link">Вперед</span></li>
             {% else %}
-              <li class="page-item"><a class="page-link" href="index{{ current_page + 1 }}.html">Вперед</a></li>
+              <li class="page-item"><a class="page-link" href="/pages/index{{ current_page + 1 }}.html">Вперед</a></li>
             {% endif %}
           </ul>
         </nav>
@@ -39,17 +39,18 @@
             <div class="card mb-3" style="max-width: 540px;">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img src="../tululu_books/{{ book.image_src }}" class="card-img" alt="Обложка книги {{ book.title }}">
+                  <img src="/media/{{ book.image_src }}" class="card-img" alt="Обложка книги {{ book.title }}">
                 </div>
                 <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ book.title }}</h5>
+                  <div class="card-body px-2 pt-2 pb-0">
+                    <h5 class="card-title p-0">{{ book.title }}</h5>
                     <p class="card-text">{{ book.author }}</p>
+                    <div class="mb-3">
                     {% for genre in book.genres %}
-                      <span class="badge badge-secondary mb-4">{{ genre }}</span>
+                      <span class="badge badge-secondary">{{ genre }}</span>
                     {% endfor %}
-                    <br>
-                    {% with book_txt_url = "../tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
+                    </div>
+                    {% with book_txt_url = "/tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
                       <a href="{{ book_txt_url|urlencode }}" target="_blank" rel="noopener noreferrer">Читать</a>
                     {% endwith %}
                     <br>

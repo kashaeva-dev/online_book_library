@@ -40,7 +40,7 @@ def main():
 
     server.watch('/Users/nataly/Projects/online_book_library/tululu_books/', render_website)
     server.watch('/Users/nataly/Projects/online_book_library/template.html', render_website)
-    server.serve(root='./pages', port=8080, host='127.0.0.1', default_filename='index1.html', )
+    server.serve(root='.', port=8080, host='127.0.0.1', default_filename='pages/index1.html', )
 
 
 if __name__ == '__main__':
