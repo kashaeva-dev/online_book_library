@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="icon" type= "image/png" sizes="152x152" href="/static/img/lg.png">
     <title>Библиотека фантастики</title>
@@ -46,13 +45,13 @@
                     <h5 class="card-title p-0">{{ book.title }}</h5>
                     <p class="card-text">{{ book.author }}</p>
                     <div class="mb-3">
-                    {% for genre in book.genres %}
-                      <span class="badge badge-secondary">{{ genre }}</span>
-                    {% endfor %}
+                      {% for genre in book.genres %}
+                        <span class="badge badge-secondary">{{ genre }}</span>
+                      {% endfor %}
                     </div>
-                    {% with book_txt_url = "/tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
-                      <a href="{{ book_txt_url|urlencode }}" target="_blank" rel="noopener noreferrer">Читать</a>
-                    {% endwith %}
+                      {% with book_txt_url = "/tululu_books/books/" + book.id|string + ". " + book.title + ".txt" %}
+                        <a href="{{ book_txt_url|urlencode }}" target="_blank" rel="noopener noreferrer">Читать</a>
+                      {% endwith %}
                     <br>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
