@@ -37,8 +37,12 @@ def main():
 
     server = Server()
 
-    server.watch('/Users/nataly/Projects/online_book_library/tululu_books/', render_website)
-    server.watch('/Users/nataly/Projects/online_book_library/template.html', render_website)
+    books_path = os.path.join(os.getcwd(), 'tululu_books/')
+    books_details_path = os.path.join(os.getcwd(), 'books_details.json')
+    template_path = os.path.join(os.getcwd(), 'template.html')
+    server.watch(books_path, render_website)
+    server.watch(books_details_path, render_website)
+    server.watch(template_path, render_website)
     server.serve(root='.', port=8080, host='127.0.0.1', default_filename='pages/index1.html', )
 
 
