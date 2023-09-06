@@ -14,7 +14,7 @@ def render_website():
 
     template = env.get_template('template.html')
 
-    with open('tululu_books/books_details.json', 'r', encoding="utf8") as file:
+    with open('books_details.json', 'r', encoding="utf8") as file:
         books_details = json.load(file)
 
     books_details_chuncked = list(chunked(books_details, 15))
