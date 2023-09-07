@@ -49,6 +49,5 @@ If you need to monitor other files or directories, you can add them in the `main
 
 1. You can use the published version of the website at https://kashaeva-dev.github.io/pages/index1.html
 2. You can use the offline version of the website. To do this, you need to download the `pages` directory
-from the repository and open the `index1.html` file in your browser. The `books_details.json` file and
-the `tululu_books` directory must be in the same directory as the `pages` directory.
-
+from the repository and open the `index1.html` file in your browser. The `books_details.json` file,
+the `tululu_books` directory and the `static` directory must be in the same directory as the `pages` directory.
