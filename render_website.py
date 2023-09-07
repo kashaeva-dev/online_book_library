@@ -27,6 +27,7 @@ def render_website():
             books_details=books_details_chunck,
             pages_count=pages_count,
             current_page=index + 1,
+            cwdir=os.getcwd(),
         )
         with open(f'pages/index{index + 1}.html', 'w', encoding="utf8") as file:
             file.write(rendered_page)
