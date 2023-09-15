@@ -38,7 +38,7 @@
             <div class="card mb-3" style="max-width: 540px;">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img src="../tululu_books/{{ book.image_src }}" class="card-img" alt="Обложка книги {{ book.title }}">
+                  <img src="../media/{{ book.image_src }}" class="card-img" alt="Обложка книги {{ book.title }}">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body px-2 pt-2 pb-0">
@@ -49,7 +49,7 @@
                         <span class="badge badge-secondary">{{ genre }}</span>
                       {% endfor %}
                     </div>
-                      {% with book_txt_url = "../tululu_books/texts/" + book.id|string + ". " + book.title + ".txt" %}
+                      {% with book_txt_url = "../media/texts/" + book.id|string + ". " + book.title + ".txt" %}
                         <a href="{{ book_txt_url|urlencode }}" target="_blank" rel="noopener noreferrer">Читать</a>
                       {% endwith %}
                     <br>
