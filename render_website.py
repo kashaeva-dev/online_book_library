@@ -9,6 +9,8 @@ from more_itertools import chunked
 
 
 def render_website(filepath):
+    books_per_page = 16
+
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml']),
@@ -19,12 +21,12 @@ def render_website(filepath):
     with open(filepath, 'r', encoding="utf8") as file:
         books_details = json.load(file)
 
-    books_details_chuncked = list(chunked(books_details, 15))
+    chuncked_books_details = list(chunked(books_details, books_per_page))
 
     os.makedirs('pages', exist_ok=True)
 
-    pages_count = len(books_details_chuncked)
-    for index, books_details_chunck in enumerate(books_details_chuncked):
+    pages_count = len(chuncked_books_details)
+    for index, books_details_chunck in enumerate(chuncked_books_details):
         rendered_page = template.render(
             books_details=books_details_chunck,
             pages_count=pages_count,
