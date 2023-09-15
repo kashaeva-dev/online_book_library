@@ -18,7 +18,7 @@ def render_website(filepath):
 
     template = env.get_template('template.html')
 
-    with open(filepath, 'r', encoding="utf8") as file:
+    with open(filepath, 'r', encoding='utf8') as file:
         books_details = json.load(file)
 
     chuncked_books_details = list(chunked(books_details, books_per_page))
@@ -26,14 +26,14 @@ def render_website(filepath):
     os.makedirs('pages', exist_ok=True)
 
     pages_count = len(chuncked_books_details)
-    for index, books_details_chunck in enumerate(chuncked_books_details):
+    for index, books_details_chunck in enumerate(chuncked_books_details, start=1):
         rendered_page = template.render(
             books_details=books_details_chunck,
             pages_count=pages_count,
-            current_page=index + 1,
+            current_page=index,
             cwdir=os.getcwd(),
         )
-        with open(f'pages/index{index + 1}.html', 'w', encoding="utf8") as file:
+        with open(f'pages/index{index}.html', 'w', encoding='utf8') as file:
             file.write(rendered_page)
 
 
@@ -61,13 +61,10 @@ def main():
 
     server = Server()
 
-    books_path = os.path.join(os.getcwd(), 'media/')
-    books_details_path = os.path.join(os.getcwd(), args.filepath)
-    template_path = os.path.join(os.getcwd(), 'template.html')
-    server.watch(books_path, render_website_partial)
-    server.watch(books_details_path, render_website_partial)
-    server.watch(template_path, render_website_partial)
-    server.serve(root='.', port=8080, host='127.0.0.1', default_filename='pages/index1.html', )
+    server.watch(os.path.join(os.getcwd(), 'media/'), render_website_partial)
+    server.watch(os.path.join(os.getcwd(), args.filepath), render_website_partial)
+    server.watch(os.path.join(os.getcwd(), 'template.html'), render_website_partial)
+    server.serve(root='.', port=8080, host='127.0.0.1', default_filename='pages/index1.html')
 
 
 if __name__ == '__main__':
